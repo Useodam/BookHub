@@ -145,7 +145,7 @@
                             <td th:text="${return.buyNo}">주문번호</td>
                             <td th:text="${return.userName}">주문자</td>
                             <td th:text="${return.buyCount}">주문수량</td>
-                            <td th:text="${return.price}">환불금액</td>
+                            <td th:text="${#numbers.formatInteger(return.price, 1, 'COMMA')}">환불금액</td>
                             <td>
                                 <p th:text="${#dates.format(return.returnDate, 'yyyy-MM-dd HH:mm:ss')}"></p>
                                 <p th:text="${#dates.format(return.returnedDate, 'yyyy-MM-dd HH:mm:ss')}"></p>
