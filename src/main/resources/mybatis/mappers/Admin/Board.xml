@@ -181,6 +181,7 @@
                     BookHub.NOTICE
         WHERE
                     NOTICE_NO BETWEEN (#{postNo} - 5) AND (#{postNo} + 5)
+                    AND NOTICE_DELETED_YN = "N"
 
                     <if test="filter.opt != null and filter.keyword != ''">
                         <choose>
