@@ -116,6 +116,7 @@ public class BoardController {
                              Model model) {
 
         filter.setBoardType("notice");
+        filter.setDeletedYN("N");
         int totalRows = boardService.getTotalRows(filter);
         Pagination pagination = new Pagination(page, totalRows, rows);
 
