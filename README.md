@@ -1,22 +1,17 @@
 # BookHub
 
 ## 목차
-* [개요](#개요)
+* [소개](#소개)
 * [멤버구성](#멤버구성)
-* [개발 환경](#개발-환경)
 * [사용 기술](#사용-기술)
-* [프로젝트 목적](#프로젝트-목적)
 * [구현 기능](#구현-기능)
-* [프로젝트를 통해 느낀점](#프로젝트를-통해-느낀점)
-* [Reference](#Reference)
 
-## 개요
-* 프로젝트 이름 : BookHub 쇼핑몰 프로젝트
-* 프로젝트 기간 : 2024.04.08~2024.05.16
-* 프로젝트 진행 기관 : 중앙 HTA IT 교육원
+## 소개
+* BookHub 쇼핑몰 프로젝트
+* 프로젝트 기간 : 2024.04.08~2024.05.16 (39일간 468시간)
 * 개발 언어 : Java17, Spring Boot, MySQL, MyBatis, Thymeleaf, HTML/CSS, JavaScript(ES6), Ajax, JQUERY
 * 개발 환경 : intelliJ, MySQL Workbench, GitHub, ERD Cloud
-* 외부 API : 카카오 결제 API, 다음 우편번호 API
+* 벤치마킹 사이트 : 교보문고, 알라딘, 예스24, 네이버 판매자 스토어
 
 ## 멤버구성
 #### 백엔드 6명
@@ -27,37 +22,29 @@
 * 지민주 : 상품관리, 카테고리 등록, 공지사항 관리<br>
 * 한기선 : 회원파트 가입/로그인, 비밀번호 찾기, 마이페이지 <br>
 
-## 개발 환경
-* intelliJ
-* MySQL Workbench
-* Git
-* GitHub
-* DataGrip
-* ERD Cloud
+
 
 ## 사용 기술
-* Java17
-* Spring Boot
-* MyBatis
-* MySQL
-* Thymeleaf
-* CSS
-* JavaScript(ES6)
-* AJAX
-* JQUERY
-* JSON
-* Bootstrap
+<img src="https://img.shields.io/badge/Java_17-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white"> &nbsp;
+<img src="https://img.shields.io/badge/Spring Boot-6DB33F.svg?style=for-the-badge&logo=Spring boot&logoColor=white" /> &nbsp;
+<img src="https://img.shields.io/badge/My Batis-색상?style=for-the-badge&logo=My Batis&logoColor=white"/> &nbsp;
+<img src="https://img.shields.io/badge/MySQL-00000F?style=for-the-badge&logo=mysql&logoColor=white"> &nbsp;
 
-## 프로젝트 목적
--작성예정-
+<img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=Javascript&logoColor=white"> &nbsp;
+<img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"/> &nbsp;
+<img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"> &nbsp;
 
 
-## 구현 기능
--작성예정-
 
-## 프로젝트를 통해 느낀점
--작성예정-
+## 구현 기능 
+
+- 관리자 로그인 / 로그아웃
+
+- 관리자 회원가입
+
+- 관리자 대시보드
+
+- 1:1 문의 답변 및 조회
 
 
-## Reference
-* 교보문고, 알라딘, 네이버 판매자 스토어
+
