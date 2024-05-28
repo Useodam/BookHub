@@ -13,15 +13,6 @@
 * 개발 환경 : intelliJ, MySQL Workbench, GitHub, ERD Cloud
 * 벤치마킹 사이트 : 교보문고, 알라딘, 예스24, 네이버 판매자 스토어
 
-## 멤버구성
-#### 백엔드 6명
-* 김유성 : 관리자파트 가입/로그인, 판매자 대시보드, CS 처리현황 <br>
-* 김규남 : 게시판(고객센터, 커뮤니티), 출석체크<br>
-* 이나경 : 메인페이지, 카테고리 리스트, 상품 검색<br>
-* 이은재 : 상품페이지, 결제, 리뷰, 장바구니<br>
-* 지민주 : 상품관리, 카테고리 등록, 공지사항 관리<br>
-* 한기선 : 회원파트 가입/로그인, 비밀번호 찾기, 마이페이지 <br>
-
 
 
 ## 사용 기술
@@ -34,17 +25,33 @@
 <img src="https://img.shields.io/badge/jQuery-0769AD?style=for-the-badge&logo=jquery&logoColor=white"/> &nbsp;
 <img src="https://img.shields.io/badge/bootstrap-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white"> &nbsp;
 
+<img src="https://img.shields.io/badge/draw.io-F08705?style=for-the-badge&logo=diagramsdotnet&logoColor=white"> &nbsp;
+<img src="https://img.shields.io/badge/fontawesome-528DD7?style=for-the-badge&logo=fontawesome&logoColor=white"> &nbsp;
 
+
+<br>
 
 ## 구현 기능 
 
 - 관리자 로그인 / 로그아웃
+  - Session을 활용한 로그인/로그아웃
+
 
 - 관리자 회원가입
+  - 정규표현식 사용
+  - @Valid 유효성 검사
+  - 중복체크 사용자예외처리 클래스(ID, 이메일)
+  - 회원가입 완료시 이메일 전송
+
 
 - 관리자 대시보드
+  - 최근 1주일 매출액 표시
+  - 총 물건 수, 회원 수, 최근 5개의 리뷰 및 별점, 1:1 문의 답변률/미답변률 표시
+  - 해당하는 날짜 선택시 매출액 및 세부내역
+  - 해당하는 범위의 날짜 매출액 및 세부내역
+
 
 - 1:1 문의 답변 및 조회
-
+  - 1:1 답변 등록 및 수정
 
 
