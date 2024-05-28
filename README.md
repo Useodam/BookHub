@@ -9,8 +9,6 @@
 ## 소개
 * BookHub 쇼핑몰 프로젝트
 * 프로젝트 기간 : 2024.04.08~2024.05.16 (39일간 468시간)
-* 개발 언어 : Java17, Spring Boot, MySQL, MyBatis, Thymeleaf, HTML/CSS, JavaScript(ES6), Ajax, JQUERY
-* 개발 환경 : intelliJ, MySQL Workbench, GitHub, ERD Cloud
 * 벤치마킹 사이트 : 교보문고, 알라딘, 예스24, 네이버 판매자 스토어
 
 
