@@ -45,5 +45,5 @@ public class DetailDashBoardController {
         return detailDashBoardService.getRangePercent(startDate, endDate);
     }
 
-    
+
 }

@@ -21,21 +21,25 @@
                      JOIN BOOK_IMAGES C ON B.BOOK_NO = C.BOOK_NO
         </select>
 
-        <select id="getNewBook"  parameterType="com.example.bookhub.main.dto.SearchCriteria" resultMap="bookResultMap">
-            SELECT
-                A.BOOK_NO,
-                A.BOOK_NAME,
-                B.BOOK_IMAGE_COVER
-            FROM BOOK A, BOOK_IMAGES B
-            WHERE
-                A.BOOK_NO = B.BOOK_NO
-              AND
-                BOOK_PUBLISHED_DATE >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
-            GROUP BY A.BOOK_NAME
-                LIMIT 8;
-        </select>
+    <select id="getNewBook" parameterType="com.example.bookhub.main.dto.SearchCriteria" resultMap="bookResultMap">
+        SELECT
+            A.BOOK_NO,
+            A.BOOK_NAME,
+            B.BOOK_IMAGE_COVER
+        FROM
+            BOOK A
+                JOIN
+            BOOK_IMAGES B ON A.BOOK_NO = B.BOOK_NO
+        WHERE
+            A.BOOK_PUBLISHED_DATE >= DATE_SUB(CURRENT_DATE(), INTERVAL 7 DAY)
+        ORDER BY
+            A.BOOK_PUBLISHED_DATE DESC
+            LIMIT 8;
+    </select>
 
-        <select id="getRecoBook"  parameterType="com.example.bookhub.main.dto.SearchCriteria" resultMap="bookResultMap">
+
+
+    <select id="getRecoBook"  parameterType="com.example.bookhub.main.dto.SearchCriteria" resultMap="bookResultMap">
             SELECT
                 A.BOOK_NO,
                 A.BOOK_NAME,
@@ -52,23 +56,27 @@
                 LIMIT 8;
         </select>
 
-        <select id="getBookViewCount"  parameterType="com.example.bookhub.main.dto.SearchCriteria" resultMap="bookResultMap">
-            SELECT
-                A.BOOK_NO,
-                A.BOOK_NAME,
-                B.BOOK_IMAGE_COVER,
-                A.BOOK_VIEW_COUNT
-            FROM
-                BOOK A
-                    JOIN BOOK_IMAGES B ON A.BOOK_NO = B.BOOK_NO
-            GROUP BY
-                A.BOOK_NAME
-            ORDER BY
-                SUM(A.BOOK_VIEW_COUNT) DESC
-                LIMIT 10;
-        </select>
+    <select id="getBookViewCount" parameterType="com.example.bookhub.main.dto.SearchCriteria" resultMap="bookResultMap">
+        SELECT
+            A.BOOK_NO,
+            A.BOOK_NAME,
+            B.BOOK_IMAGE_COVER,
+            SUM(A.BOOK_VIEW_COUNT) AS TOTAL_VIEW_COUNT
+        FROM
+            BOOK A
+                JOIN
+            BOOK_IMAGES B ON A.BOOK_NO = B.BOOK_NO
+        GROUP BY
+            A.BOOK_NO,
+            A.BOOK_NAME,
+            B.BOOK_IMAGE_COVER
+        ORDER BY
+            TOTAL_VIEW_COUNT DESC
+            LIMIT 10;
+    </select>
 
-        <!--조회 결과 집합을 객체로 매핑-->
+
+    <!--조회 결과 집합을 객체로 매핑-->
     <resultMap id="bookResultMap" type="com.example.bookhub.main.dto.BookDto">
         <id column="BOOK_NO" property="no" />
         <result column="BOOK_NAME" property="name"/>
