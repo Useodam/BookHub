@@ -34,13 +34,23 @@ jobs:
         run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"
 
       # EB에 CD 하기 위해 추가 작성
-      - name: Generate deployment package
+      - name: Create deploy directory if not exists
+        run: mkdir -p deploy
+
+      - name: Copy jar file to deploy directory
+        run: cp -f build/libs/*.jar deploy/application.jar
+
+      - name: Copy Procfile to deploy directory
+        run: cp -f Procfile deploy/Procfile
+
+      - name: Copy .ebextensions directory to deploy directory
+        run: cp -rf .ebextensions deploy/.ebextensions
+
+      - name: Zip deploy directory
         run: |
-          mkdir -p deploy
-          cp build/libs/*.jar deploy/application.jar
-          cp Procfile deploy/Procfile
-          cp -r .ebextensions deploy/.ebextensions
-          cd deploy && zip -r deploy.zip .
+          cd deploy
+          zip -r deploy.zip .
+
       - name: Deploy to EB
         uses: einaregilsson/beanstalk-deploy@v21
         with:
