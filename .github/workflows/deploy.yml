@@ -4,25 +4,25 @@ on:
     branches:
       - main
 
-# https://github.com/actions/setup-java
-# actions/setup-java@v2는 사용자 정의 배포를 지원하고 Zulu OpenJDK, Eclipse Temurin 및 Adopt OpenJDK를 기본적으로 지원합니다. v1은 Zulu OpenJDK만 지원합니다.
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Set up JDK 17
         uses: actions/setup-java@v3
         with:
           java-version: 17
           distribution: zulu
+
       - name: Grant execute permission for gradlew
         run: chmod +x ./gradlew
+
       - name: Build with Gradle
         run: ./gradlew clean build
 
-      # UTC가 기준이기 때문에 한국시간으로 맞추려면 +9시간 해야 한다.
       - name: Get current time
         uses: 1466587594/get-current-time@v2
         id: current-time
@@ -33,18 +33,17 @@ jobs:
       - name: Show Current Time
         run: echo "CurrentTime=${{steps.current-time.outputs.formattedTime}}"
 
-      # EB에 CD 하기 위해 추가 작성
-      - name: Create deploy directory if not exists
+      - name: Create deploy directory
         run: mkdir -p deploy
 
       - name: Copy jar file to deploy directory
         run: cp -f build/libs/*.jar deploy/application.jar
 
       - name: Copy Procfile to deploy directory
-        run: cp -f Procfile deploy/Procfile
+        run: cp Procfile deploy/Procfile
 
       - name: Copy .ebextensions directory to deploy directory
-        run: cp -rf .ebextensions deploy/.ebextensions
+        run: cp -r .ebextensions deploy/.ebextensions
 
       - name: Zip deploy directory
         run: |
@@ -56,8 +55,8 @@ jobs:
         with:
           aws_access_key: ${{ secrets.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ secrets.AWS_SECRET_KEY }}
-          application_name: aws-bookhub-beanstalk # 엘리스틱 빈스톡 애플리케이션 이름!
-          environment_name: Aws-bookhub-beanstalk-env-06241 # 엘리스틱 빈스톡 환경 이름!
+          application_name: aws-bookhub-beanstalk
+          environment_name: Aws-bookhub-beanstalk-env-06241
           version_label: aws-v5-${{steps.current-time.outputs.formattedTime}}
           region: ap-northeast-2
           deployment_package: deploy/deploy.zip
